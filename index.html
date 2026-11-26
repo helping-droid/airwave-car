@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#153859">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Airwave · Browser Streamer</title>
+<link rel="icon" href="icon.png">
+<link rel="stylesheet" href="style.css?v=9.3">
+</head>
+<body>
+<div id="login" class="login hidden">
+  <div class="card">
+    <div class="logo">Airwave <span>Browser Streamer</span></div>
+    <p>Enter the four-digit Wi-Fi code shown in Airwave<br><small>Settings → Browser Streamer → Use the same Wi-Fi instead</small></p>
+    <form id="pinForm"><input id="pin" inputmode="numeric" maxlength="4" autocomplete="off" placeholder="• • • •" autofocus>
+    <button type="submit">Open</button></form>
+    <div id="pinMsg" class="msg"></div>
+  </div>
+</div>
+
+<div id="pair" class="login hidden">
+  <div class="card">
+    <div class="logo">Airwave <span>Browser Streamer</span></div>
+    <p>On your phone open <b>Airwave</b> → Settings → <b>Browser Streamer</b> and enter this code:</p>
+    <div id="pairCode" class="code">······</div>
+    <div id="pairMsg" class="msg"></div>
+    <button id="newCode" class="linkish">New code</button>
+  </div>
+</div>
+<header>
+  <div class="toprow">
+    <div class="logo">Airwave <span>Browser Streamer</span></div>
+    <form id="searchForm" class="search"><input id="q" type="search" placeholder="Search this tab" autocomplete="off"><button aria-label="Search">🔍</button></form>
+    <button id="remoteBtn" class="remoteBtn hidden" title="TV remote">🎮 <span>Remote</span></button>
+  </div>
+  <nav id="tabs"></nav>
+</header>
+<div id="pad" class="pad hidden">
+  <div class="padHead"><b>📺 TV remote</b><button id="padClose" aria-label="Close">✕</button></div>
+  <div class="dpad">
+    <span></span><button data-k="up">▲</button><span></span>
+    <button data-k="left">◀</button><button data-k="ok" class="ok">OK</button><button data-k="right">▶</button>
+    <span></span><button data-k="down">▼</button><span></span>
+  </div>
+  <div class="padRow"><button data-k="back">↩ Back</button><button data-k="home">🏠 Home</button><button data-k="menu">☰ Menu</button></div>
+  <div class="padRow"><button data-k="rew">⏪</button><button data-k="playpause">⏯</button><button data-k="ffwd">⏩</button></div>
+  <div class="padRow"><button data-k="chdown">CH −</button><button data-k="chup">CH +</button></div>
+</div>
+
+<main>
+  <aside id="sections"></aside>
+  <section id="content">
+    <div id="player" class="player hidden">
+      <div class="stage">
+        <video id="video" controls playsinline></video>
+        <iframe id="frame" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+        <div id="audioBox" class="audioBox"><img id="audioArt" alt=""><div id="audioTitle"></div><audio id="audio" controls></audio></div>
+        <div id="blocked" class="blocked"><div id="blockedText"></div><div><a id="ytLink" target="_blank" rel="noopener">▶ Watch on YouTube</a></div></div>
+        <div id="playMsg" class="playMsg"></div>
+      </div>
+      <div class="bar">
+        <div id="nowTitle" class="now"></div>
+        <button id="catalogNext" class="hidden">Try another source</button>
+        <button id="catalogRetry" class="hidden">Retry</button>
+        <button id="catalogFull" class="hidden">Fullscreen</button>
+        <button id="tvBtn">📺 Play on TV</button>
+        <button id="closeBtn">✕ Close</button>
+      </div>
+    </div>
+    <div id="remote" class="remote hidden">
+      <span id="remoteTitle">Playing on TV</span>
+      <button data-op="prev">⏮</button><button data-op="back">−30</button><button data-op="pause">⏯</button>
+      <button data-op="fwd">+30</button><button data-op="next">⏭</button><button data-op="stop">⏹</button>
+    </div>
+    <button id="browseBack" class="linkish hidden">← Back to titles</button>
+    <h2 id="heading"></h2>
+    <div id="grid" class="grid"></div>
+    <div id="status" class="status"></div>
+    <button id="more" class="more hidden">Load more</button>
+  </section>
+</main>
+<button id="toTop" class="toTop hidden" title="Back to top">▲ Top</button>
+<div id="toast" class="toast"></div>
+<script src="hls.min.js"></script>
+<script src="app.js?v=9.3"></script>
+</body>
+</html>
